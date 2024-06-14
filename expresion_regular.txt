@@ -1,0 +1,39 @@
+nuevo caracter expresion regular
+
+\n^\**.,	busca todos los saltos de linea que continuan y despues tienen una "coma"  --combo1
+^\**.,		busca todos los inicios de linea y despues una "coma"
+
+[\t\n\x0B\f\r\x20\x85\xA0\x{2028}\x{2029}] espacios y saltos con comas
+
+
+,[a-z],		modo de busqueda expresion regular busca cualquier caracter entre a y z entre 2 comas. ejemplo ,a, ,g,
+,[^a-z],	modo de busqueda expresion regular caracter o numero entre a y z y entre 0 y 9 y simbolos, etc					--combo2
+
+
+,[\!\"\#\$\%\&\/\(\)\=\?\'\\\¡\¿\¨\´\+\*\~\[\]\{\}\`\^\<\>\;\:\.\-\_\|\@\,],			--combo3
+,[\!\"\#\$\%\&\/\(\)\=\?\'\\\¡\¿\¨\´\+\*],
+
+^(?=.*\bCAT\b)(?=.*\bROAD\b).*$
+^(?=.*\b,-00,-\b)(?=.*\b,-,\b).*$
+
+(?-s)^(?=.*,-00,-)(?=.*,-,).+
+(?-s)^(?=.*def)(?=.*phone).+  --- busca def y phone en la misma linea
+
+Not everyone knows that:
+leading off your regex with a variant of (?i) will search case INSENSITIVELY (the i is for Insensitive)
+leading off your regex with a variant of (?-i) will search case SENSITIVELY (the -i is for NOT [or “minus”] Insensive)
+and that these little strings, if used, override the setting of the Match case checkbox, 
+since they are logically processed after the checkbox setting.
+
+^(?=.*\b,--,\b)(?=.*\b,-,0,-\b).*$
+Explanation:
+
+^ start line
+$ end line
+?= positive look ahead
+\b word boundary. Not sure if you want this or not. Remove these if you want to match any part of word, e.g. 
+TheCATgoes up and down theROAD.
+(?=) is a positive look ahead. We have two such look aheads, 
+one for anything (*) followed by CAT and one for anything (*) followed by ROAD. 
+There is an implied && between the two lookaheads - both conditions must be satisfied.
+

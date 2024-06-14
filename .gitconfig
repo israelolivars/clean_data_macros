@@ -1,0 +1,19 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = israelolivars
+	email = israelolivaresrangel@gmail.com
+[safe]
+	directory = C:/Users/temporal/Desktop/Hello git
+[alias]
+	tree = log --graph --decorate --all --oneline
+[core]
+	autocrlf = true
+[difftool "sourcetree"]
+	cmd = "'' "
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
